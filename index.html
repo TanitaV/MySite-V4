@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Administration</title>
+</head>
+<body>
+    
+    
+    <?php 
+
+    // variable to store GBC course by name
+    $course = "Web Server Administration";
+    
+    // compare the $course with given string 
+    // if both are same strcmp returns 0
+    if (strcmp($course, "Web Server Administration") == 0){
+        // print success message
+        echo "Yes it is <br>";
+    }
+    else {
+        // print failed message
+        echo "No it is not <br>";
+    }
+
+    // Use URL http://<server>:<port>/?a=<number>&b=<number>&c=<number>
+    // check if the request method is GET
+    if( $_SERVER['REQUEST_METHOD'] == 'GET' ){           
+
+        // check if all three parameters in URL are given
+        if (isset($_GET['a']) && isset($_GET['b']) && isset($_GET['c']) ){
+
+            // assign URL parameters (a , b , c) to variables
+            $a = $_GET['a'];
+            $b = $_GET['b'];
+            $c = $_GET['c'];
+
+            // check if all three parameters are numeric
+            if ( is_numeric($a) && is_numeric($b) && is_numeric($c) ){
+
+                // print the Product
+                echo "Product of three numbers: " . ($a*$b*$c) . "<br>";
+                // print the sum
+                echo "Sum of three numbers: " . ($a+$b+$c) . "<br>";
+            }
+            else {
+                // if any one is not numeric, display error
+                echo "All three numbers must be numeric<br>";
+            }
+        }
+        
+    }
+
+    // set initial count to 0
+    $count = 0;
+    // for loop from -500 to 500 with increment being 100
+    for($i = -500; $i <= 500; $i+=100){
+        // increment count by 1
+        $count++;
+    }
+
+    // print the count
+    echo "Count from -500 to 500 is: " . $count ."<br><br>";
+       
+    ?>
+
+    <!-- show source file -->
+    <?php show_source(__FILE__)?>
+</body>
+</html>
