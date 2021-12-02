@@ -8,64 +8,61 @@
 <body>
     
     
-    <?php 
+   <?php  
+//Task 1. Create a variable that stores value of my favorite course name.
 
-    // variable to store GBC course by name
-    $course = "Web Server Administration";
-    
-    // compare the $course with given string 
-    // if both are same strcmp returns 0
-    if (strcmp($course, "Web Server Administration") == 0){
-        // print success message
-        echo "Yes it is <br>";
-    }
-    else {
-        // print failed message
-        echo "No it is not <br>";
-    }
+$course_name = "Network Infrastructure";
 
-    // Use URL http://<server>:<port>/?a=<number>&b=<number>&c=<number>
-    // check if the request method is GET
-    if( $_SERVER['REQUEST_METHOD'] == 'GET' ){           
+//Task 2. Determine is the variable above is equal to "Web Server Administration".
 
-        // check if all three parameters in URL are given
-        if (isset($_GET['a']) && isset($_GET['b']) && isset($_GET['c']) ){
+if (strcmp($course_name,"Web Server Administration") == 0){
 
-            // assign URL parameters (a , b , c) to variables
-            $a = $_GET['a'];
-            $b = $_GET['b'];
-            $c = $_GET['c'];
+    //Task 2.a. Output message: "Yes it is" or "No is not".
+    echo "Yes it is.\n";
+}
+else {
+    echo "No it is not.\n";
+}
 
-            // check if all three parameters are numeric
-            if ( is_numeric($a) && is_numeric($b) && is_numeric($c) ){
+//Task 3. GET three numbers from user via URL.
 
-                // print the Product
-                echo "Product of three numbers: " . ($a*$b*$c) . "<br>";
-                // print the sum
-                echo "Sum of three numbers: " . ($a+$b+$c) . "<br>";
-            }
-            else {
-                // if any one is not numeric, display error
-                echo "All three numbers must be numeric<br>";
-            }
-        }
-        
-    }
+$a = $_GET['value1'];
+$b = $_GET['value2'];
+$c = $_GET['value2'];
 
-    // set initial count to 0
-    $count = 0;
-    // for loop from -500 to 500 with increment being 100
-    for($i = -500; $i <= 500; $i+=100){
-        // increment count by 1
-        $count++;
-    }
+$PRD = $a * $b * $c;
+$SUM = $a + $b + $c;
 
-    // print the count
-    echo "Count from -500 to 500 is: " . $count ."<br><br>";
-       
-    ?>
+//Task 3.a. Ensure that all 3 values are numerical.
 
-    <!-- show source file -->
-    <?php show_source(__FILE__)?>
+$a = (float)$a;
+$b = (float)$b;
+$c = (float)$c;
+
+if (is_float($a) && is_float($b) && is_float($c)){
+
+    //Task 3.b. Display the product of the 3 numbers.
+    echo "The product of 3 numbers:".$PRD."\n";
+
+    //Task 3.c. Display the sum of the 3 numbers.
+    echo "The sum of the 3 numbers:".$SUM."\n";
+}
+else {
+
+    echo "The all three values must be numerical.";
+}
+
+//Task 4. Count from -500 to 500, incrementing by 100 using a for loop.
+
+$count = 0;
+
+for ($i = -500; $i <= 500; $i+= 100){
+
+    $count++;
+    echo($i."\n");
+}
+?>
+
+<?php  show_source(__FILE__);  ?>
 </body>
 </html>
